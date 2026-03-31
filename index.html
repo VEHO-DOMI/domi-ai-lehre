@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DomiKI — Gymnasium der Dominikanerinnen</title>
+    <title>DomiKI – Unterrichtsplattform</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
@@ -17,7 +17,6 @@
             overflow-x: hidden;
         }
 
-        /* Animated background */
         .bg-grid {
             position: fixed;
             inset: 0;
@@ -39,17 +38,8 @@
             pointer-events: none;
         }
 
-        .bg-glow-1 {
-            top: -200px;
-            right: -100px;
-            background: #6366f1;
-        }
-
-        .bg-glow-2 {
-            bottom: -200px;
-            left: -100px;
-            background: #8b5cf6;
-        }
+        .bg-glow-1 { top: -200px; right: -100px; background: #6366f1; }
+        .bg-glow-2 { bottom: -200px; left: -100px; background: #8b5cf6; }
 
         .container {
             position: relative;
@@ -63,7 +53,41 @@
             justify-content: center;
         }
 
-        /* Header */
+        /* ===== LANDING ===== */
+        .top-bar {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 32px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .top-bar-logo {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 14px;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .top-bar-text {
+            font-size: 13px;
+            color: #6b7280;
+            line-height: 1.4;
+        }
+
+        .top-bar-text strong {
+            color: #9ca3af;
+            font-weight: 600;
+        }
+
         .badge {
             display: inline-flex;
             align-items: center;
@@ -71,9 +95,9 @@
             background: rgba(99, 102, 241, 0.12);
             border: 1px solid rgba(99, 102, 241, 0.25);
             color: #a5b4fc;
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 600;
-            padding: 6px 14px;
+            padding: 5px 12px;
             border-radius: 100px;
             letter-spacing: 0.5px;
             text-transform: uppercase;
@@ -95,54 +119,91 @@
         }
 
         h1 {
-            font-size: clamp(28px, 5vw, 42px);
+            font-size: clamp(32px, 6vw, 48px);
             font-weight: 800;
             line-height: 1.1;
-            margin-bottom: 16px;
+            margin-bottom: 8px;
             background: linear-gradient(135deg, #ffffff 0%, #a5b4fc 50%, #8b5cf6 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
 
-        .subtitle {
-            font-size: 15px;
-            line-height: 1.6;
-            color: #9ca3af;
-            margin-bottom: 36px;
-            max-width: 560px;
-        }
-
-        .subtitle strong {
+        .tagline {
+            font-size: 16px;
+            font-weight: 500;
             color: #c4b5fd;
+            margin-bottom: 20px;
         }
 
-        /* Form */
+        .subtitle {
+            font-size: 14px;
+            line-height: 1.7;
+            color: #9ca3af;
+            margin-bottom: 32px;
+            max-width: 600px;
+        }
+
+        .subtitle a {
+            color: #a5b4fc;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 28px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 14px;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 10px;
+            font-size: 13px;
+            color: #d1d5db;
+        }
+
+        .feature-icon {
+            width: 28px;
+            height: 28px;
+            background: rgba(99, 102, 241, 0.12);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+
         .form-card {
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.06);
             border-radius: 16px;
-            padding: 32px;
+            padding: 28px;
             backdrop-filter: blur(10px);
         }
 
-        .form-group {
-            margin-bottom: 20px;
-        }
+        .form-group { margin-bottom: 18px; }
 
         label {
             display: block;
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 600;
             color: #9ca3af;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
 
         select {
             width: 100%;
-            padding: 14px 16px;
+            padding: 13px 16px;
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 10px;
@@ -163,42 +224,28 @@
             box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
         }
 
-        select option {
-            background: #1a1a2e;
-            color: #e0e0e0;
-        }
+        select option { background: #1a1a2e; color: #e0e0e0; }
 
         .btn {
             width: 100%;
-            padding: 16px;
+            padding: 15px;
             background: linear-gradient(135deg, #6366f1, #8b5cf6);
             border: none;
             border-radius: 10px;
             color: white;
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 600;
             font-family: 'Inter', sans-serif;
             cursor: pointer;
             transition: all 0.3s;
-            margin-top: 8px;
+            margin-top: 6px;
             position: relative;
             overflow: hidden;
         }
 
-        .btn:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 8px 30px rgba(99, 102, 241, 0.3);
-        }
-
-        .btn:active {
-            transform: translateY(0);
-        }
-
-        .btn:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-            transform: none;
-        }
+        .btn:hover { transform: translateY(-1px); box-shadow: 0 8px 30px rgba(99, 102, 241, 0.3); }
+        .btn:active { transform: translateY(0); }
+        .btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
 
         .btn::after {
             content: '';
@@ -217,74 +264,69 @@
             display: flex;
             align-items: center;
             gap: 8px;
-            margin-top: 20px;
-            padding: 12px 16px;
+            margin-top: 16px;
+            padding: 10px 14px;
             background: rgba(34, 197, 94, 0.06);
             border: 1px solid rgba(34, 197, 94, 0.15);
             border-radius: 10px;
-            font-size: 13px;
+            font-size: 12px;
             color: #86efac;
         }
 
-        .info-bar svg {
-            flex-shrink: 0;
-        }
+        .info-bar svg { flex-shrink: 0; }
 
-        /* ===== PROGRESS SCREEN ===== */
-        .screen {
-            display: none;
-        }
-
-        .screen.active {
-            display: block;
-            animation: fadeIn 0.5s ease;
-        }
+        /* ===== SCREENS ===== */
+        .screen { display: none; }
+        .screen.active { display: block; animation: fadeIn 0.5s ease; }
 
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        .progress-section {
-            text-align: center;
-        }
+        /* ===== PROGRESS ===== */
+        .progress-section { text-align: center; }
 
-        .avatar-placeholder {
-            width: 120px;
-            height: 120px;
+        .avatar-container {
+            width: 140px;
+            height: 140px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #6366f1, #8b5cf6);
-            margin: 0 auto 32px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            margin: 0 auto 28px;
             position: relative;
-            animation: avatar-pulse 2s ease-in-out infinite;
+            overflow: hidden;
+            border: 3px solid rgba(99, 102, 241, 0.4);
         }
 
-        @keyframes avatar-pulse {
-            0%, 100% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.4); }
-            50% { box-shadow: 0 0 0 20px rgba(99, 102, 241, 0); }
+        .avatar-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.4s ease;
+            position: absolute;
+            inset: 0;
         }
 
-        .avatar-placeholder svg {
-            width: 48px;
-            height: 48px;
-            fill: white;
-            opacity: 0.9;
-        }
+        .avatar-container img.hidden { opacity: 0; }
 
         .spinner-ring {
             position: absolute;
-            inset: -8px;
+            inset: -10px;
             border: 3px solid transparent;
             border-top-color: #a5b4fc;
             border-radius: 50%;
             animation: spin 1.5s linear infinite;
+            z-index: 2;
         }
 
-        @keyframes spin {
-            to { transform: rotate(360deg); }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        .avatar-glow {
+            position: absolute;
+            inset: -4px;
+            border-radius: 50%;
+            background: conic-gradient(#6366f1, #8b5cf6, #a78bfa, #6366f1);
+            z-index: -1;
+            animation: spin 3s linear infinite;
         }
 
         .progress-title {
@@ -297,16 +339,15 @@
         .progress-teacher {
             font-size: 15px;
             color: #a5b4fc;
-            margin-bottom: 28px;
+            margin-bottom: 24px;
         }
 
         .progress-bar-container {
             background: rgba(255, 255, 255, 0.06);
             border-radius: 100px;
-            height: 12px;
+            height: 10px;
             overflow: hidden;
-            margin-bottom: 16px;
-            position: relative;
+            margin-bottom: 12px;
         }
 
         .progress-bar-fill {
@@ -321,9 +362,7 @@
         .progress-bar-fill::after {
             content: '';
             position: absolute;
-            right: 0;
-            top: 0;
-            bottom: 0;
+            right: 0; top: 0; bottom: 0;
             width: 30px;
             background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3));
             border-radius: 100px;
@@ -333,56 +372,168 @@
             font-size: 14px;
             font-weight: 600;
             color: #a5b4fc;
-            margin-bottom: 20px;
+            margin-bottom: 16px;
             font-variant-numeric: tabular-nums;
         }
 
         .progress-status {
             font-size: 14px;
-            color: #9ca3af;
+            color: #d1d5db;
             min-height: 24px;
             transition: opacity 0.3s;
         }
 
-        .progress-status.fade {
-            opacity: 0;
-        }
+        .progress-status.fade { opacity: 0; }
 
         .terminal-log {
-            margin-top: 28px;
+            margin-top: 24px;
             background: rgba(0, 0, 0, 0.3);
             border: 1px solid rgba(255, 255, 255, 0.06);
             border-radius: 10px;
-            padding: 16px;
+            padding: 14px;
             text-align: left;
-            max-height: 160px;
+            max-height: 180px;
             overflow-y: auto;
-            font-family: 'SF Mono', 'Fira Code', monospace;
-            font-size: 12px;
+            font-family: 'SF Mono', 'Fira Code', 'Courier New', monospace;
+            font-size: 11px;
         }
 
         .terminal-log .log-line {
             color: #6b7280;
-            margin-bottom: 4px;
+            margin-bottom: 3px;
             opacity: 0;
             animation: logAppear 0.3s forwards;
         }
 
-        .terminal-log .log-line.success {
-            color: #22c55e;
+        .terminal-log .log-line.success { color: #22c55e; }
+        .terminal-log .log-line.warning { color: #f59e0b; }
+        .terminal-log .log-line.info { color: #38bdf8; }
+
+        @keyframes logAppear { to { opacity: 1; } }
+
+        /* ===== SUMMARY SCREEN ===== */
+        .summary-section { text-align: center; }
+
+        .summary-avatar {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            margin: 0 auto 24px;
+            border: 3px solid #6366f1;
+            overflow: hidden;
+            box-shadow: 0 0 40px rgba(99, 102, 241, 0.3);
         }
 
-        .terminal-log .log-line.warning {
-            color: #f59e0b;
+        .summary-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
-        @keyframes logAppear {
-            to { opacity: 1; }
+        .summary-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 4px;
         }
 
-        /* ===== REVEAL SCREEN ===== */
-        .reveal-section {
-            text-align: center;
+        .summary-subtitle {
+            font-size: 15px;
+            color: #a5b4fc;
+            margin-bottom: 24px;
+        }
+
+        .summary-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 14px;
+            padding: 24px;
+            text-align: left;
+            margin-bottom: 24px;
+        }
+
+        .summary-card h3 {
+            font-size: 13px;
+            font-weight: 600;
+            color: #a5b4fc;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 12px;
+        }
+
+        .summary-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .stat-item {
+            padding: 10px;
+            background: rgba(255,255,255,0.02);
+            border-radius: 8px;
+        }
+
+        .stat-value {
+            font-size: 20px;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .stat-label {
+            font-size: 11px;
+            color: #9ca3af;
+            margin-top: 2px;
+        }
+
+        .summary-description {
+            font-size: 14px;
+            line-height: 1.7;
+            color: #d1d5db;
+        }
+
+        .btn-start {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-size: 16px;
+            font-weight: 700;
+            font-family: 'Inter', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-start:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 8px 30px rgba(34, 197, 94, 0.3);
+        }
+
+        .btn-start::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, transparent 40%, rgba(255,255,255,0.15) 50%, transparent 60%);
+            animation: shimmer 3s infinite;
+        }
+
+        /* ===== REVEAL ===== */
+        .reveal-section { text-align: center; }
+
+        .reveal-emoji {
+            font-size: 64px;
+            margin-bottom: 24px;
+            animation: wiggle 0.5s ease-in-out 0.8s;
+        }
+
+        @keyframes wiggle {
+            0%, 100% { transform: rotate(0); }
+            25% { transform: rotate(-10deg); }
+            75% { transform: rotate(10deg); }
         }
 
         .reveal-title {
@@ -414,18 +565,6 @@
             font-size: 15px;
             color: #c4b5fd;
             margin-bottom: 32px;
-        }
-
-        .reveal-emoji {
-            font-size: 64px;
-            margin-bottom: 24px;
-            animation: wiggle 0.5s ease-in-out 0.8s;
-        }
-
-        @keyframes wiggle {
-            0%, 100% { transform: rotate(0); }
-            25% { transform: rotate(-10deg); }
-            75% { transform: rotate(10deg); }
         }
 
         .reveal-card {
@@ -466,23 +605,22 @@
         }
 
         @keyframes confetti-fall {
-            to {
-                top: 110vh;
-                transform: rotate(720deg);
-            }
+            to { top: 110vh; transform: rotate(720deg); }
         }
 
-        /* Footer */
         .footer {
             position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
+            bottom: 0; left: 0; right: 0;
             padding: 12px;
             text-align: center;
             font-size: 11px;
             color: #374151;
             z-index: 1;
+        }
+
+        @media (max-width: 600px) {
+            .feature-grid { grid-template-columns: 1fr; }
+            .summary-stats { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -494,23 +632,51 @@
     <div class="container">
         <!-- SCREEN 1: Landing -->
         <div id="screen-landing" class="screen active">
-            <div class="badge">System aktiv — v3.1.2</div>
+            <div class="top-bar">
+                <div class="top-bar-logo">KI</div>
+                <div class="top-bar-text">
+                    <strong>Bundesministerium f&uuml;r Bildung, Wissenschaft und Forschung</strong><br>
+                    Pilotprogramm &bdquo;KI-gest&uuml;tzter Unterricht&ldquo; &mdash; Schuljahr 2025/26
+                </div>
+            </div>
+
+            <div class="badge">System aktiv &mdash; v3.1.2</div>
             <h1>DomiKI</h1>
+            <div class="tagline">Unterrichtsplattform &mdash; Gymnasium der Dominikanerinnen</div>
             <p class="subtitle">
-                Gemäß der <strong>Verordnung des BMBWF zur Integration von KI in den Schulunterricht</strong> (GZ 2025-0.734.210) wurde für jede Lehrperson ein vollständig KI-gestützter Unterrichts-Avatar erstellt, der den gesamten Lehrplan Ihres Faches abdeckt.
+                Bildungsminister Christoph Wiederkehr hat es klar formuliert: <strong>&bdquo;Nat&uuml;rlich soll KI in jedem Fach vorkommen.&ldquo;</strong> Im Rahmen seiner Bildungsreform zur <a href="https://orf.at/stories/3420898/" target="_blank">St&auml;rkung informatischer Grundkompetenzen</a> wurde f&uuml;r jede Lehrperson am Gymnasium der Dominikanerinnen ein vollst&auml;ndig KI-gest&uuml;tzter Unterrichts-Avatar erstellt, der den gesamten Lehrplan Ihres Faches abdeckt.
             </p>
+
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">🧠</div>
+                    Lehrplan-konforme KI-Avatare
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🎙️</div>
+                    Stimm- & Pers&ouml;nlichkeitsklone
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">📊</div>
+                    Automatische Benotung
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🔒</div>
+                    DSGVO-konform (EU-Server)
+                </div>
+            </div>
 
             <div class="form-card">
                 <div class="form-group">
-                    <label for="subject">Unterrichtsfach wählen</label>
+                    <label for="subject">Unterrichtsfach w&auml;hlen</label>
                     <select id="subject">
-                        <option value="" disabled selected>— Fach auswählen —</option>
+                        <option value="" disabled selected>&mdash; Fach ausw&auml;hlen &mdash;</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="teacher">Lehrperson wählen</label>
+                    <label for="teacher">Lehrperson w&auml;hlen</label>
                     <select id="teacher">
-                        <option value="" disabled selected>— Name auswählen —</option>
+                        <option value="" disabled selected>&mdash; Name ausw&auml;hlen &mdash;</option>
                     </select>
                 </div>
                 <button class="btn" id="btn-start" disabled>
@@ -518,7 +684,7 @@
                 </button>
                 <div class="info-bar">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#86efac" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                    Alle Daten werden DSGVO-konform auf EU-Servern verarbeitet.
+                    Alle Daten werden DSGVO-konform auf EU-Servern verarbeitet. Pilotschule #47.
                 </div>
             </div>
         </div>
@@ -526,9 +692,9 @@
         <!-- SCREEN 2: Progress -->
         <div id="screen-progress" class="screen">
             <div class="progress-section">
-                <div class="avatar-placeholder">
+                <div class="avatar-container" id="avatar-container">
+                    <div class="avatar-glow"></div>
                     <div class="spinner-ring"></div>
-                    <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
                 </div>
                 <div class="progress-title">KI-Avatar wird erstellt</div>
                 <div class="progress-teacher" id="progress-teacher"></div>
@@ -541,7 +707,24 @@
             </div>
         </div>
 
-        <!-- SCREEN 3: Reveal -->
+        <!-- SCREEN 3: Summary -->
+        <div id="screen-summary" class="screen">
+            <div class="summary-section">
+                <div class="summary-avatar" id="summary-avatar"></div>
+                <div class="summary-title" id="summary-name"></div>
+                <div class="summary-subtitle" id="summary-subject"></div>
+                <div class="summary-card">
+                    <h3>Avatar-Profil</h3>
+                    <div class="summary-stats" id="summary-stats"></div>
+                    <div class="summary-description" id="summary-description"></div>
+                </div>
+                <button class="btn-start" id="btn-go">
+                    🚀 Unterricht starten — Los geht's!
+                </button>
+            </div>
+        </div>
+
+        <!-- SCREEN 4: Reveal -->
         <div id="screen-reveal" class="screen">
             <div class="reveal-section">
                 <div class="reveal-emoji">😂</div>
@@ -557,221 +740,294 @@
                     <p>
                         KI kann vieles — aber euch als Lehrpersonen ersetzen?
                         Nicht heute, und auch nicht morgen.
-                        Schöne Osterferien und bis bald! ❤️
+                        Sch&ouml;ne Osterferien und bis bald! ❤️
                     </p>
                 </div>
-                <div class="credit">DomiKI v3.1.2 — Powered by Imagination™</div>
+                <div class="credit">DomiKI v3.1.2 &mdash; Powered by Imagination&trade;</div>
             </div>
         </div>
     </div>
 
-    <div class="footer">© 2026 Gymnasium der Dominikanerinnen — AI Integration Unit</div>
+    <div class="footer">&copy; 2026 Gymnasium der Dominikanerinnen &mdash; AI Integration Unit</div>
 
     <script>
         // ===== DATA =====
         const subjects = [
-            "Bewegung und Sport",
-            "Bildnerische Erziehung",
-            "Biologie und Umweltkunde",
-            "Chemie",
-            "Deutsch",
-            "Digitale Grundbildung",
-            "Englisch",
-            "Ethik",
-            "Französisch",
-            "Geographie und wirtschaftliche Bildung",
-            "Geschichte und politische Bildung",
-            "Informatik",
-            "Italienisch",
-            "Katholische Religion",
-            "Kunst und Gestaltung",
-            "Latein",
-            "Mathematik",
-            "Musik",
-            "Physik",
-            "Psychologie und Philosophie",
-            "Spanisch",
-            "Technisches Werken",
-            "Textiles Werken"
+            "Bewegung und Sport", "Bildnerische Erziehung", "Biologie und Umweltkunde",
+            "Chemie", "Deutsch", "Digitale Grundbildung", "Englisch", "Ethik",
+            "Französisch", "Geographie und wirtschaftliche Bildung",
+            "Geschichte und politische Bildung", "Informatik", "Italienisch",
+            "Katholische Religion", "Kunst und Gestaltung", "Latein", "Mathematik",
+            "Musik", "Physik", "Psychologie und Philosophie", "Spanisch",
+            "Technisches Werken", "Textiles Werken"
         ];
 
         const teachers = [
-            "ADAMCIK-PREUSSER Helga",
-            "BACHL Katja Hedwig",
-            "BEDNARZ Nicole",
-            "BOCK Bianca",
-            "BYSTRICKY Cornelia",
-            "CHYSKA Mario",
-            "FASCHINGER Valentin",
-            "FORSTER Iris",
-            "HAMMER Martin",
-            "HEBENSTREIT Andrea",
-            "HIRNSCHALL Hermann",
-            "HÖLBLING Michael",
-            "HORVATH Christian Stefan",
-            "INZINGER Stephanie",
-            "KÖLLERER Peter",
-            "KOMAN Lorenz",
-            "LEDERER Ulrike",
-            "LEITNER Michaela",
-            "LEUTHNER Theresa",
-            "MAK Eva-Maria",
-            "MAURUS Pia",
-            "NEUSES Christina",
-            "ORSOLIC Marianne",
-            "PAULOVICS Veronica",
-            "PITSCHEIDER Marisa",
-            "PLATZER Regina",
-            "PREISSLER Michelle",
-            "REICHSTÄDTER Sabrina",
-            "REITMANN Hartwig",
-            "RODRIGUEZ Laura",
-            "ROITINGER Elisabeth",
-            "ROSIGKEIT Leonhard",
-            "SCHEIKL-ANDRITSCH Elisabeth",
-            "SCHOISWOHL Stefan",
-            "SEMEN Ellen",
-            "SOMMER-RIEF Eike",
-            "STARNBERGER Marion",
-            "STEINDL Florian",
-            "STÖGER-HEINISSER Verena",
-            "STOISER Hanna",
-            "STRAHSER Eva",
-            "STREBL Martin",
-            "SZECSENYI Stefan",
-            "TAFERNER Lorenz",
-            "TEICHMANN Christa",
-            "TIEFENBÖCK Ulrike",
-            "TONEV Kosta",
-            "TRANDAFIR Valentin-Radu",
-            "UEBE Imogen",
-            "VEHABOVIC Orhan",
-            "VESTJENS Pieter",
-            "WALTER Nora",
-            "WIDERIN Claudia",
-            "WIESEGGER Verena",
-            "WILDOM Anne",
-            "WURZER Karin"
+            "ADAMCIK-PREUSSER Helga", "BACHL Katja Hedwig", "BEDNARZ Nicole",
+            "BOCK Bianca", "BYSTRICKY Cornelia", "CHYSKA Mario", "FASCHINGER Valentin",
+            "FORSTER Iris", "HAMMER Martin", "HEBENSTREIT Andrea", "HIRNSCHALL Hermann",
+            "HÖLBLING Michael", "HORVATH Christian Stefan", "INZINGER Stephanie",
+            "KÖLLERER Peter", "KOMAN Lorenz", "LEDERER Ulrike", "LEITNER Michaela",
+            "LEUTHNER Theresa", "MAK Eva-Maria", "MAURUS Pia", "NEUSES Christina",
+            "ORSOLIC Marianne", "PAULOVICS Veronica", "PITSCHEIDER Marisa",
+            "PLATZER Regina", "PREISSLER Michelle", "REICHSTÄDTER Sabrina",
+            "REITMANN Hartwig", "RODRIGUEZ Laura", "ROITINGER Elisabeth",
+            "ROSIGKEIT Leonhard", "SCHEIKL-ANDRITSCH Elisabeth", "SCHOISWOHL Stefan",
+            "SEMEN Ellen", "SOMMER-RIEF Eike", "STARNBERGER Marion", "STEINDL Florian",
+            "STÖGER-HEINISSER Verena", "STOISER Hanna", "STRAHSER Eva", "STREBL Martin",
+            "SZECSENYI Stefan", "TAFERNER Lorenz", "TEICHMANN Christa",
+            "TIEFENBÖCK Ulrike", "TONEV Kosta", "TRANDAFIR Valentin-Radu",
+            "UEBE Imogen", "VEHABOVIC Orhan", "VESTJENS Pieter", "WALTER Nora",
+            "WIDERIN Claudia", "WIESEGGER Verena", "WILDOM Anne", "WURZER Karin"
         ];
 
-        // ===== PROGRESS MESSAGES =====
+        // Avatar images from vocab trainer
+        const avatarUrls = [];
+        for (let i = 1; i <= 50; i++) {
+            avatarUrls.push(`https://raw.githubusercontent.com/VEHO-DOMI/1st-grade-vocab-trainer/main/avatars/${String(i).padStart(2,'0')}.png`);
+        }
+        // Shuffle avatars
+        for (let i = avatarUrls.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [avatarUrls[i], avatarUrls[j]] = [avatarUrls[j], avatarUrls[i]];
+        }
+
+        // ===== PROGRESS MESSAGES (extended!) =====
         const progressSteps = [
-            { pct: 3, msg: "Neuronales Netzwerk wird initialisiert...", log: "[INIT] Loading DomiAI Core v3.1.2..." },
-            { pct: 7, msg: "Verbindung zum BMBWF-Server wird hergestellt...", log: "[NET] Connecting to bmbwf-ai.gv.at:443... OK" },
-            { pct: 12, msg: "Lehrplandaten werden synchronisiert...", log: "[SYNC] Curriculum data: 2.847 learning objectives loaded" },
-            { pct: 18, msg: "Gesichtszüge werden analysiert...", log: "[CV] FaceNet model loaded, scanning facial features..." },
-            { pct: 24, msg: "Stimmprofil wird kalibriert...", log: "[AUDIO] Voice cloning: pitch=214Hz, timbre=warm" },
-            { pct: 30, msg: "Pädagogische Kompetenz wird hochgeladen...", log: "[AI] Uploading 15 years of pedagogical expertise..." },
-            { pct: 35, msg: "Lehrergehalt wird an KI überwiesen...", log: "[FIN] Salary redirect: AT89 3700 0000 0000 1234... 😏" },
-            { pct: 42, msg: "Kaffeepausen werden eingeplant...", log: "[SCHED] Coffee break optimizer: 3.7 cups/day optimal" },
-            { pct: 48, msg: "Klassenbuch wird automatisch ausgefüllt...", log: "[DB] Auto-filling Klassenbuch... 847 entries generated" },
-            { pct: 53, msg: "Supplierstunden werden eliminiert...", log: "[OPT] Supply teacher slots: eliminated. You're welcome." },
-            { pct: 58, msg: "Konferenzen werden auf 2 Minuten gekürzt...", log: "[MEET] Conference optimizer: 90min → 2min. Efficiency +4400%" },
-            { pct: 63, msg: "Elternsprechtag wird durch Chatbot ersetzt...", log: "[BOT] ParentBot™ deployed: 'Ihr Kind ist sehr brav.'" },
-            { pct: 68, msg: "Schularbeiten werden automatisch korrigiert...", log: "[GRADE] AutoGrade™: red pen simulation at 99.7% accuracy" },
-            { pct: 73, msg: "Work-Life-Balance wird optimiert...", log: "[LIFE] Setting work hours: 0h/week. Balance achieved. ✓" },
-            { pct: 78, msg: "Motivationsalgorithmus wird kalibriert...", log: "[MOT] Student motivation engine: bribery module loaded" },
-            { pct: 83, msg: "Avatar-Rendering läuft...", log: "[GPU] Rendering avatar... VRAM: 23.4GB/24GB" },
-            { pct: 88, msg: "Persönlichkeit wird kopiert...", log: "[PSY] Personality clone: sarcasm=87%, patience=12%" },
-            { pct: 92, msg: "Letzte Qualitätsprüfung...", log: "[QA] Running 2.341 unit tests... all passed ✓" },
-            { pct: 96, msg: "Avatar wird in die Cloud deployt...", log: "[DEPLOY] Uploading to eu-west-1.domi-ai.cloud..." },
-            { pct: 100, msg: "Abgeschlossen!", log: "[DONE] Avatar ready. Teacher can go home now. 🏠" }
+            { pct: 2,  msg: "Neuronales Netzwerk wird initialisiert...", log: "[INIT] Loading DomiKI Core v3.1.2...", cls: "" },
+            { pct: 4,  msg: "Verbindung zum BMBWF-Server...", log: "[NET] Connecting to bmbwf-ki.gv.at:443... OK", cls: "" },
+            { pct: 7,  msg: "Pilotschul-Lizenz wird verifiziert...", log: "[AUTH] License #DOM-2026-047 verified ✓", cls: "success" },
+            { pct: 10, msg: "Lehrplandaten werden synchronisiert...", log: "[SYNC] Curriculum data: 2.847 learning objectives loaded", cls: "" },
+            { pct: 13, msg: "Schularbeitstermine werden importiert...", log: "[CAL] Importing 342 exam dates from WebUntis...", cls: "" },
+            { pct: 16, msg: "Gesichtszüge werden analysiert...", log: "[CV] FaceNet model loaded, scanning facial features...", cls: "" },
+            { pct: 19, msg: "Augenringe werden entfernt...", log: "[CV] Dark circle removal: intensity=87% (detected: teacher lifestyle)", cls: "warning" },
+            { pct: 22, msg: "Stimmprofil wird kalibriert...", log: "[AUDIO] Voice cloning: pitch=214Hz, timbre=warm, sarcasm=enabled", cls: "" },
+            { pct: 25, msg: "Pädagogische Kompetenz wird hochgeladen...", log: "[AI] Uploading 15 years of pedagogical expertise...", cls: "" },
+            { pct: 28, msg: "Geduld wird künstlich erzeugt...", log: "[PSY] Patience module: natural=12%, synthetic boost to 94%", cls: "info" },
+            { pct: 31, msg: "Lehrergehalt wird an KI überwiesen...", log: "[FIN] Salary redirect: AT89 3700 0000 0000 1234... 😏", cls: "warning" },
+            { pct: 33, msg: "Kaffeepausen werden eingeplant...", log: "[SCHED] Coffee break optimizer: 3.7 cups/day optimal", cls: "" },
+            { pct: 36, msg: "Klassenbuch wird automatisch ausgefüllt...", log: "[DB] Auto-filling Klassenbuch... 847 entries generated", cls: "" },
+            { pct: 39, msg: "Supplierstunden werden eliminiert...", log: "[OPT] Supply teacher slots: eliminated. You're welcome.", cls: "" },
+            { pct: 42, msg: "Konferenzen werden auf 2 Minuten gekürzt...", log: "[MEET] Conference optimizer: 90min → 2min. Efficiency +4400%", cls: "success" },
+            { pct: 44, msg: "Elternsprechtag wird durch Chatbot ersetzt...", log: "[BOT] ParentBot™ deployed: 'Ihr Kind ist sehr brav.'", cls: "" },
+            { pct: 47, msg: "Schularbeiten werden automatisch korrigiert...", log: "[GRADE] AutoGrade™: red pen simulation at 99.7% accuracy", cls: "" },
+            { pct: 49, msg: "Rotstift-Emoji-Pack wird geladen...", log: "[UI] Loading ✗✗✗ emoji pack... 847 variations available", cls: "" },
+            { pct: 52, msg: "'Setzens, Fünf!' wird kalibriert...", log: "[NLP] Catchphrase engine: 142 disappointed sighs loaded", cls: "info" },
+            { pct: 55, msg: "Work-Life-Balance wird optimiert...", log: "[LIFE] Setting work hours: 0h/week. Balance achieved. ✓", cls: "success" },
+            { pct: 57, msg: "Motivationsalgorithmus wird kalibriert...", log: "[MOT] Student motivation engine: bribery module loaded", cls: "" },
+            { pct: 60, msg: "Kreide-Wurfgenauigkeit wird trainiert...", log: "[PHYS] Chalk throwing accuracy: 97.3% (headshot mode: disabled)", cls: "warning" },
+            { pct: 62, msg: "Pausenaufsicht wird automatisiert...", log: "[DRONE] Surveillance drone fleet: 4 units deployed to Schulhof", cls: "" },
+            { pct: 65, msg: "Kopierer-Papierstau wird simuliert...", log: "[HW] Printer jam simulation: realistic frustration level 9/10", cls: "" },
+            { pct: 67, msg: "Matura-Panik wird modelliert...", log: "[ML] Student panic model: accuracy 99.9% (May predictions ready)", cls: "" },
+            { pct: 70, msg: "Vertretungsplan wird für immer gelöscht...", log: "[DB] DROP TABLE supplierstunden; -- no more Supplierungen! 🎉", cls: "success" },
+            { pct: 72, msg: "Avatar-Garderobe wird zusammengestellt...", log: "[STYLE] Outfit generator: 47 variations of 'business casual'", cls: "" },
+            { pct: 75, msg: "WebUntis-Integration wird gehackt...", log: "[API] WebUntis API: attendance=100%, homework=always_done", cls: "info" },
+            { pct: 78, msg: "Schüler-Ausreden-Datenbank wird geladen...", log: "[NLP] Loaded 14.892 excuse patterns: 'Mein Hund hat...' → auto-reject", cls: "" },
+            { pct: 80, msg: "Ironie-Detektor wird scharf gestellt...", log: "[NLP] Sarcasm engine: Austrian dialect mode ACTIVATED", cls: "" },
+            { pct: 83, msg: "Avatar-Rendering läuft...", log: "[GPU] Rendering avatar... VRAM: 23.4GB/24GB", cls: "" },
+            { pct: 85, msg: "Persönlichkeit wird kopiert...", log: "[PSY] Personality clone: empathy=high, patience=synthetic", cls: "" },
+            { pct: 88, msg: "Lehrerkonferenz-Überlebensmodus wird aktiviert...", log: "[SURV] Conference survival: auto-nod=ON, phone-under-table=ON", cls: "warning" },
+            { pct: 90, msg: "Digitale Grundbildung wird grundgebildet...", log: "[EDU] DigGrub™ module: can now explain 'what is a browser'", cls: "" },
+            { pct: 93, msg: "Letzte Qualitätsprüfung...", log: "[QA] Running 2.341 unit tests... all passed ✓", cls: "" },
+            { pct: 95, msg: "BMBWF-Zertifizierung wird beantragt...", log: "[GOV] Submitting to bmbwf-ki.gv.at... Status: GENEHMIGT", cls: "success" },
+            { pct: 97, msg: "Avatar wird in die Cloud deployt...", log: "[DEPLOY] Uploading to eu-west-1.domi-ki.cloud...", cls: "" },
+            { pct: 100, msg: "Abgeschlossen!", log: "[DONE] ✅ Avatar ready. Teacher can go home now. 🏠", cls: "success" }
         ];
+
+        // ===== SUBJECT-SPECIFIC FUNNY DESCRIPTIONS =====
+        const subjectDescriptions = {
+            "Bewegung und Sport": "kann 47 verschiedene Aufwärmübungen in 3 Minuten demonstrieren, pfeift lauter als jede Trillerpfeife und hat einen eingebauten Stoppuhr-Chip. Lässt niemanden auf der Bank sitzen — auch sich selbst nicht, denn dieser Avatar hat keine Beine, nur Motivation.",
+            "Bildnerische Erziehung": "malt schneller als Bob Ross, kennt 14.000 Pantone-Farben auswendig und kann den Unterschied zwischen 'Das ist Kunst' und 'Das ist mein Kaffeefleck' in 0.3 Sekunden erkennen. Lieblingsfarbe: #6366f1.",
+            "Biologie und Umweltkunde": "kennt jedes Blatt im Schulhof persönlich, kann die Mitose in Echtzeit simulieren und hat einen eingebauten Pflanzendetektor. Warnt automatisch, wenn jemand eine Pflanze nicht gießt.",
+            "Chemie": "hat den Periodensystem-Rap drauf, kann Explosionen digital simulieren (ohne Rauchmelder-Alarm) und verwandelt langweilige Formeln in TikTok-würdige Reaktionsgleichungen. Schutzbrille ist trotzdem Pflicht.",
+            "Deutsch": "beherrscht alle 4 Fälle im Schlaf, korrigiert Rechtschreibfehler in Echtzeit und kann Kafkas 'Die Verwandlung' in 17 verschiedenen Dialekten vorlesen. Erkennt ein fehlendes Beistrich auf 500 Meter Entfernung.",
+            "Digitale Grundbildung": "erklärt zum 500. Mal geduldig, was ein Browser ist, kann 'Strg+C' und 'Strg+V' in Gebärdensprache zeigen und hat einen eingebauten Phishing-Detektor. Passwort ist NICHT '12345'.",
+            "Englisch": "spricht British, American, Australian und Denglisch fließend, korrigiert Grammatik schneller als Grammarly und kann 'I will, ich werde' im Schlaf konjugieren. Favourite colour: purple.",
+            "Ethik": "kann moralische Dilemmata in 0.5 Sekunden analysieren, hat für jede Diskussion ein perfektes Gedankenexperiment parat und urteilt nie — außer bei Hausaufgaben, da ist der Avatar gnadenlos.",
+            "Französisch": "rollt das R perfekter als jeder Pariser, kann Crêpes digital backen und verwechselt nie 'passé composé' mit 'imparfait'. Sagt 'Très bien!' mit authentischem Naserümpfen.",
+            "Geographie und wirtschaftliche Bildung": "kann jeden Fluss auf der Weltkarte in 0.2 Sekunden finden, erklärt Inflation so, dass es sogar die 5. Klasse versteht, und hat einen eingebauten Klimawandel-Countdown.",
+            "Geschichte und politische Bildung": "war bei der Französischen Revolution 'live dabei' (simuliert), kann alle österreichischen Bundeskanzler in chronologischer Reihenfolge aufsagen und diskutiert leidenschaftlich über die EU-Verordnung zum Gurkenkrümmungsgrad.",
+            "Informatik": "programmiert in 47 Sprachen gleichzeitig, erklärt Rekursion mit Rekursion und hat Stack Overflow auswendig gelernt. Bug-free seit... naja, seit dem letzten Neustart.",
+            "Italienisch": "gestikuliert beim Sprechen (digital), kann 'Ciao!' in 14 verschiedenen Stimmlagen sagen und bestellt Pizza Margherita mit perfekter Aussprache. Mamma mia!",
+            "Katholische Religion": "kennt alle Bibelstellen auswendig, kann Gleichnisse in Meme-Format übersetzen und betet automatisch vor jeder Schularbeit für gute Noten. Nächstenliebe-Algorithmus: aktiviert.",
+            "Kunst und Gestaltung": "hat einen eingebauten Kreativitätsgenerator, kann abstraktes Denken in 4K rendern und weiß, dass 'Das soll so aussehen' manchmal die ehrlichste Kunstkritik ist.",
+            "Latein": "dekliniert schneller als Caesar conquert, kann 'Gallia est omnis divisa in partes tres' im Schlaf übersetzen und macht Ablativus Absolutus endlich absolut verständlich.",
+            "Mathematik": "löst quadratische Gleichungen während des Bootens, hat Pi auf 1 Million Stellen gespeichert und beweist in jeder Stunde, dass man Mathe doch im Leben braucht. Taschenrechner ist trotzdem erlaubt.",
+            "Musik": "spielt 94 Instrumente gleichzeitig, kann Beethovens 5. in MIDI pfeifen und erkennt ein verstimmtes Instrument in einem Orchester aus 500 Schüler-Blockflöten. Ohrwurm-Garantie inklusive.",
+            "Physik": "lässt digital Äpfel fallen (Newton wäre stolz), kann Quantenmechanik in Emojis erklären und hat die Formel E=mc² als Profilbild. Reibungsverluste werden ignoriert.",
+            "Psychologie und Philosophie": "analysiert Freud schneller als Freud sich selbst, stellt die Frage 'Aber WARUM?' in jeder Stunde mindestens 42 Mal und hat einen eingebauten Existenzkrise-Detektor für die Oberstufe.",
+            "Spanisch": "rollt das R wie ein Flamencotänzer, kann Tapas-Rezepte auf Spanisch diktieren und verwechselt nie ser und estar. ¡Olé! Siesta-Modus: standardmäßig aktiviert.",
+            "Technisches Werken": "sägt digital schneller als jede CNC-Fräse, kennt den Unterschied zwischen Kreuzschlitz und Schlitz im Schlaf und hat einen eingebauten Erste-Hilfe-Kit für Holzsplitter.",
+            "Textiles Werken": "näht schneller als jede Nähmaschine, kann den perfekten Kreuzstich in 0.001 Sekunden berechnen und hat ein enzyklopädisches Wissen über Stoffmuster. Warnung: Nadelkissen-Emoji wird exzessiv verwendet."
+        };
 
         // ===== INIT =====
         const subjectSelect = document.getElementById('subject');
         const teacherSelect = document.getElementById('teacher');
-        const btnStart = document.getElementById('btn-start');
+        const btnStartEl = document.getElementById('btn-start');
 
         subjects.forEach(s => {
             const opt = document.createElement('option');
-            opt.value = s;
-            opt.textContent = s;
+            opt.value = s; opt.textContent = s;
             subjectSelect.appendChild(opt);
         });
 
         teachers.forEach(t => {
             const opt = document.createElement('option');
-            opt.value = t;
-            opt.textContent = t;
+            opt.value = t; opt.textContent = t;
             teacherSelect.appendChild(opt);
         });
 
         function checkReady() {
-            btnStart.disabled = !(subjectSelect.value && teacherSelect.value);
+            btnStartEl.disabled = !(subjectSelect.value && teacherSelect.value);
         }
 
         subjectSelect.addEventListener('change', checkReady);
         teacherSelect.addEventListener('change', checkReady);
 
         // ===== START =====
-        btnStart.addEventListener('click', () => {
-            const subject = subjectSelect.value;
-            const teacher = teacherSelect.value;
+        let selectedSubject = '';
+        let selectedTeacher = '';
+        let finalAvatarUrl = '';
+
+        btnStartEl.addEventListener('click', () => {
+            selectedSubject = subjectSelect.value;
+            selectedTeacher = teacherSelect.value;
 
             document.getElementById('screen-landing').classList.remove('active');
-            const progressScreen = document.getElementById('screen-progress');
-            progressScreen.classList.add('active');
+            document.getElementById('screen-progress').classList.add('active');
+            document.getElementById('progress-teacher').textContent = `${selectedTeacher} — ${selectedSubject}`;
 
-            document.getElementById('progress-teacher').textContent =
-                `${teacher} — ${subject}`;
+            // Preload first few avatars
+            avatarUrls.slice(0, 10).forEach(url => { const img = new Image(); img.src = url; });
 
             runProgress();
         });
 
-        // ===== PROGRESS ANIMATION =====
+        // ===== PROGRESS WITH AVATAR CYCLING =====
         function runProgress() {
             const bar = document.getElementById('progress-bar');
             const pctEl = document.getElementById('progress-percent');
             const statusEl = document.getElementById('progress-status');
             const logEl = document.getElementById('terminal-log');
+            const avatarContainer = document.getElementById('avatar-container');
 
             let stepIndex = 0;
+            let avatarIndex = 0;
+            let currentImg = null;
+
+            // Start avatar cycling
+            function showNextAvatar() {
+                const url = avatarUrls[avatarIndex % avatarUrls.length];
+                const newImg = document.createElement('img');
+                newImg.src = url;
+                newImg.className = 'hidden';
+                avatarContainer.appendChild(newImg);
+
+                // Preload next
+                const nextUrl = avatarUrls[(avatarIndex + 1) % avatarUrls.length];
+                const preload = new Image(); preload.src = nextUrl;
+
+                requestAnimationFrame(() => {
+                    setTimeout(() => {
+                        newImg.classList.remove('hidden');
+                        if (currentImg) {
+                            currentImg.classList.add('hidden');
+                            setTimeout(() => currentImg.remove(), 400);
+                        }
+                        currentImg = newImg;
+                    }, 50);
+                });
+
+                avatarIndex++;
+                finalAvatarUrl = url;
+            }
+
+            showNextAvatar();
+            const avatarInterval = setInterval(showNextAvatar, 600);
 
             function nextStep() {
                 if (stepIndex >= progressSteps.length) {
-                    setTimeout(showReveal, 800);
+                    clearInterval(avatarInterval);
+                    setTimeout(showSummary, 1000);
                     return;
                 }
 
                 const step = progressSteps[stepIndex];
-
-                // Animate progress bar
                 bar.style.width = step.pct + '%';
                 pctEl.textContent = step.pct + '%';
 
-                // Fade status message
                 statusEl.classList.add('fade');
                 setTimeout(() => {
                     statusEl.textContent = step.msg;
                     statusEl.classList.remove('fade');
                 }, 150);
 
-                // Add terminal log
                 const line = document.createElement('div');
-                line.className = 'log-line' + (step.pct === 100 ? ' success' : step.pct === 35 ? ' warning' : '');
+                line.className = 'log-line' + (step.cls ? ' ' + step.cls : '');
                 line.textContent = step.log;
                 logEl.appendChild(line);
                 logEl.scrollTop = logEl.scrollHeight;
 
                 stepIndex++;
-
-                // Random delay between 400-700ms for realism
-                const delay = 400 + Math.random() * 300;
+                const delay = 450 + Math.random() * 400;
                 setTimeout(nextStep, delay);
             }
 
-            setTimeout(nextStep, 600);
+            setTimeout(nextStep, 800);
+        }
+
+        // ===== SUMMARY =====
+        function showSummary() {
+            document.getElementById('screen-progress').classList.remove('active');
+            const summaryScreen = document.getElementById('screen-summary');
+            summaryScreen.classList.add('active');
+
+            // Set avatar
+            const avatarDiv = document.getElementById('summary-avatar');
+            avatarDiv.innerHTML = `<img src="${finalAvatarUrl}" alt="Avatar">`;
+
+            // Set name and subject
+            document.getElementById('summary-name').textContent = `KI-Avatar: ${selectedTeacher}`;
+            document.getElementById('summary-subject').textContent = selectedSubject;
+
+            // Generate fun stats
+            const stats = document.getElementById('summary-stats');
+            stats.innerHTML = `
+                <div class="stat-item">
+                    <div class="stat-value">${(Math.random() * 50 + 50).toFixed(1)}%</div>
+                    <div class="stat-label">Persönlichkeits-Match</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">${Math.floor(Math.random() * 8000 + 2000)}</div>
+                    <div class="stat-label">Lernziele geladen</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">${(Math.random() * 3 + 1).toFixed(1)} s</div>
+                    <div class="stat-label">Reaktionszeit</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">∞</div>
+                    <div class="stat-label">Geduld (synthetisch)</div>
+                </div>
+            `;
+
+            // Subject-specific description
+            const desc = subjectDescriptions[selectedSubject] ||
+                "beherrscht das gesamte Fach in- und auswendig, braucht weder Kaffeepause noch Ferien und ist rund um die Uhr für Ihre Schülerinnen und Schüler verfügbar. Burnout-Risiko: 0%.";
+
+            const firstName = selectedTeacher.split(' ').slice(1).join(' ');
+            document.getElementById('summary-description').textContent =
+                `Der KI-Avatar von ${firstName} ${desc}`;
         }
 
         // ===== REVEAL =====
-        function showReveal() {
-            document.getElementById('screen-progress').classList.remove('active');
+        document.getElementById('btn-go').addEventListener('click', () => {
+            document.getElementById('screen-summary').classList.remove('active');
             document.getElementById('screen-reveal').classList.add('active');
             launchConfetti();
-        }
+        });
 
-        // ===== CONFETTI =====
         function launchConfetti() {
             const container = document.createElement('div');
             container.className = 'confetti-container';
@@ -779,22 +1035,21 @@
 
             const colors = ['#6366f1', '#8b5cf6', '#a78bfa', '#f59e0b', '#22c55e', '#ef4444', '#ec4899', '#06b6d4'];
 
-            for (let i = 0; i < 120; i++) {
+            for (let i = 0; i < 150; i++) {
                 setTimeout(() => {
-                    const confetti = document.createElement('div');
-                    confetti.className = 'confetti';
-                    confetti.style.left = Math.random() * 100 + 'vw';
-                    confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-                    confetti.style.width = (6 + Math.random() * 8) + 'px';
-                    confetti.style.height = (6 + Math.random() * 8) + 'px';
-                    confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
-                    confetti.style.animationDuration = (2 + Math.random() * 3) + 's';
-                    confetti.style.animationDelay = '0s';
-                    container.appendChild(confetti);
-                }, Math.random() * 1500);
+                    const c = document.createElement('div');
+                    c.className = 'confetti';
+                    c.style.left = Math.random() * 100 + 'vw';
+                    c.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                    c.style.width = (6 + Math.random() * 8) + 'px';
+                    c.style.height = (6 + Math.random() * 8) + 'px';
+                    c.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+                    c.style.animationDuration = (2 + Math.random() * 3) + 's';
+                    container.appendChild(c);
+                }, Math.random() * 2000);
             }
 
-            setTimeout(() => container.remove(), 6000);
+            setTimeout(() => container.remove(), 7000);
         }
     </script>
 </body>
